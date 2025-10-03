@@ -1,44 +1,38 @@
-# Real Estate Website
+# 🏠 Prop.AI - Mobile-Optimized Real Estate Website
 
-A modern, responsive real estate website built with Next.js, TypeScript, and Tailwind CSS. Features a stunning day-to-night transition design with animated elements and comprehensive real estate functionality.
+A modern, responsive real estate platform built with Next.js 14, featuring mobile-first design, dark theme, and Google Maps integration.
 
-## 🚀 Features
+## ✨ Features
 
-- **Modern Design**: Beautiful day-to-night split-screen hero section
-- **Responsive Layout**: Optimized for all device sizes
-- **Interactive Animations**: Smooth transitions and hover effects
-- **Property Listings**: Showcase featured properties with detailed information
-- **Contact Forms**: Integrated contact and inquiry forms
-- **SEO Optimized**: Built-in SEO best practices
-- **Performance**: Fast loading with Next.js optimization
+### 📱 Mobile-First Design
+- **Touch-Friendly Navigation**: Bottom navigation optimized for mobile
+- **Responsive Layout**: Automatically adapts to any screen size
+- **Mobile Menu**: Hamburger menu with overlay for profile access
+- **Touch Gestures**: Smooth animations and interactions
 
-## 🛠️ Tech Stack
+### 🖥️ Desktop Experience
+- **Full Sidebar**: Always-visible profile sidebar on desktop
+- **Multi-Column Grid**: Up to 4 property columns on large screens
+- **Hover Effects**: Rich desktop interactions
+- **Desktop Layout**: Full-width experience with sidebar
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Forms**: React Hook Form
-- **Validation**: Zod
+### 🎨 Modern UI/UX
+- **Dark Theme**: Sleek dark interface with yellow accents (#E3EF26)
+- **Smooth Animations**: Framer Motion powered transitions
+- **Professional Design**: Clean, modern real estate interface
+- **Consistent Branding**: Yellow accent color throughout
 
-## 📦 Dependencies
+### 🗺️ Location Integration
+- **Google Maps**: Direct integration with location buttons
+- **Dark Theme Maps**: Matches website's dark aesthetic
+- **Touch-Friendly**: Mobile-optimized map interactions
 
-### Core Dependencies
-- `next` - React framework for production
-- `react` & `react-dom` - UI library
-- `typescript` - Type safety
-- `tailwindcss` - Utility-first CSS framework
-- `framer-motion` - Animation library
-- `lucide-react` - Icon library
+### 🤖 AI Assistant
+- **Aisha Chat**: AI-powered property recommendations
+- **Real-time Chat**: Interactive chat interface
+- **Smart Suggestions**: Personalized property advice
 
-### Development Dependencies
-- `eslint` - Code linting
-- `prettier` - Code formatting
-- `@tailwindcss/forms` - Form styling
-- `@tailwindcss/typography` - Typography plugin
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+ 
@@ -46,114 +40,150 @@ A modern, responsive real estate website built with Next.js, TypeScript, and Tai
 
 ### Installation
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/prop-ai-real-estate.git
+cd prop-ai-real-estate
 
-2. **Run the development server:**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+# Install dependencies
+npm install
 
-3. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+# Run development server
+npm run dev
+
+# Open http://localhost:3000
+```
 
 ### Build for Production
 
 ```bash
+# Build the application
 npm run build
-npm start
+
+# The static files will be in the 'out' directory
+# Ready for deployment to any static hosting service
 ```
+
+## 📱 Responsive Design
+
+### Mobile (< 640px)
+- Single column property grid
+- Bottom navigation bar
+- Touch-friendly buttons (10x10)
+- Mobile menu with overlay
+- Compact spacing
+
+### Tablet (640px - 1023px)
+- 2-column property grid
+- Medium navigation buttons (12x12)
+- Hybrid mobile/desktop features
+- Balanced layout
+
+### Desktop (1024px+)
+- 3-4 column property grid
+- Full sidebar navigation
+- Large navigation buttons (14x14)
+- Desktop hover effects
+- Full-width layout
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Language**: TypeScript
+- **Backend**: Supabase (ready for integration)
+- **Deployment**: Static export ready
 
 ## 📁 Project Structure
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Home page
-├── components/            # React components
-│   ├── sections/          # Page sections
-│   ├── layout/            # Layout components
-│   └── ui/                # Reusable UI components
+├── app/                    # Next.js App Router pages
+│   ├── home/              # Dashboard page
+│   ├── explore/           # Property browsing
+│   ├── profile/           # User profile
+│   ├── aisha/             # AI assistant
+│   └── login/             # Authentication
+├── components/            # Reusable components
+│   ├── auth/              # Authentication forms
+│   ├── providers/         # React context providers
+│   └── sections/          # Page sections
 ├── lib/                   # Utility functions
-└── types/                 # TypeScript type definitions
+├── hooks/                 # Custom React hooks
+└── types/                 # TypeScript definitions
 ```
-
-## 🎨 Customization
-
-### Colors
-The project uses a custom color palette defined in `tailwind.config.js`:
-- **Primary**: Blue tones for main branding
-- **Secondary**: Gray tones for text and backgrounds
-- **Accent**: Gold/yellow for highlights
-- **Day/Night**: Special colors for the hero section
-
-### Animations
-Custom animations are defined in the Tailwind config:
-- `fade-in`, `slide-up`, `slide-down`
-- `scale-in`, `float`, `pulse-slow`
-
-### Components
-All components are built with:
-- TypeScript for type safety
-- Tailwind CSS for styling
-- Framer Motion for animations
-- Responsive design principles
-
-## 🔧 Configuration Files
-
-- `next.config.js` - Next.js configuration
-- `tailwind.config.js` - Tailwind CSS configuration
-- `tsconfig.json` - TypeScript configuration
-- `postcss.config.js` - PostCSS configuration
-- `.eslintrc.json` - ESLint configuration
-- `.prettierrc` - Prettier configuration
-
-## 📱 Responsive Design
-
-The website is fully responsive with breakpoints:
-- Mobile: < 768px
-- Tablet: 768px - 1024px
-- Desktop: > 1024px
-
-## 🎯 Key Features
-
-### Hero Section
-- Split-screen day/night design
-- Animated sun, moon, and clouds
-- Central skyscraper with day/night windows
-- Smooth transitions and floating animations
-
-### Property Listings
-- Grid layout with property cards
-- Featured property highlighting
-- Property details (bedrooms, bathrooms, area)
-- Interactive elements (favorites, contact)
-
-### Contact Section
-- Contact information display
-- Interactive contact form
-- Multiple contact methods
-- Form validation
 
 ## 🚀 Deployment
 
-The project is ready for deployment on:
-- Vercel (recommended)
-- Netlify
-- AWS Amplify
-- Any Node.js hosting platform
+### Vercel (Recommended)
+1. Connect your GitHub repository to Vercel
+2. Automatic deployment on every push
+3. Global CDN and edge functions
+
+### Netlify
+1. Connect your GitHub repository
+2. Build command: `npm run build`
+3. Publish directory: `out`
+
+### GitHub Pages
+1. Push the `out` directory contents
+2. Enable GitHub Pages in repository settings
+
+## 🎯 Key Features
+
+### Property Listings
+- **Responsive Grid**: 1-4 columns based on screen size
+- **Location Buttons**: Direct Google Maps integration
+- **Property Cards**: Beautiful cards with images and details
+- **Search & Filter**: Advanced property filtering
+
+### User Profiles
+- **Buyer Profiles**: Property collections and preferences
+- **Seller Profiles**: Listing management and analytics
+- **Responsive Sidebar**: Mobile overlay, desktop always-visible
+
+### AI Assistant (Aisha)
+- **Chat Interface**: Real-time chat with AI
+- **Property Recommendations**: Smart suggestions
+- **Mobile Optimized**: Touch-friendly chat interface
+
+## 📱 Mobile Optimizations
+
+- **Touch Navigation**: Bottom navigation for easy thumb access
+- **Responsive Images**: Optimized for mobile bandwidth
+- **Touch Targets**: Minimum 44px touch targets
+- **Swipe Gestures**: Smooth mobile interactions
+- **Viewport Meta**: Proper mobile rendering
+
+## 🖥️ Desktop Features
+
+- **Full Sidebar**: Always-visible profile sidebar
+- **Multi-Column Layout**: Up to 4 property columns
+- **Hover Effects**: Rich desktop interactions
+- **Keyboard Navigation**: Full keyboard support
+- **Large Screens**: Optimized for 1920px+ displays
+
+## 🔧 Development
+
+### Available Scripts
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
+
+### Environment Variables
+Create `.env.local` for Supabase integration:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project is open source and available under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 
@@ -164,4 +194,8 @@ This project is licensed under the MIT License.
 
 ## 📞 Support
 
-For support, email info@realestate.com or create an issue in the repository.
+For support, email support@prop-ai.com or create an issue on GitHub.
+
+---
+
+**Built with ❤️ for the future of real estate** 🏠✨
