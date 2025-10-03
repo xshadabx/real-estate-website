@@ -95,7 +95,7 @@ const PropertyCard = ({
       </div>
       
       {/* Content */}
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
       <h3 className="font-bold text-white text-lg mb-2 group-hover:text-cyan-400 transition-colors duration-300 line-clamp-2">
         {property.title}
       </h3>
@@ -176,10 +176,10 @@ const BottomNavigation = () => {
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.3 }}
-      className="fixed bottom-6 left-1/2 transform -translate-x-1/2 -translate-x-20 z-50"
+      className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-sm mx-auto px-4 sm:bottom-6 sm:max-w-md"
     >
       <div className="bg-zinc-900/95 backdrop-blur-xl border border-zinc-800 rounded-full shadow-2xl px-6 py-3">
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex items-center justify-center gap-1 sm:gap-2 md:gap-3">
           {navigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -214,7 +214,7 @@ const BottomNavigation = () => {
               <motion.button
                 key={item.id}
                 onClick={handleClick}
-                className={`relative flex flex-col items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${
+                className={`relative flex flex-col items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full transition-all duration-300 ${
                   isActive
                     ? 'text-black shadow-lg ring-2 ring-yellow-400/30'
                     : 'bg-zinc-800 text-gray-400 hover:bg-zinc-700 hover:text-gray-200'
@@ -382,7 +382,7 @@ export default function BuyerDashboard() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
         {/* Back Button */}
         <motion.button
           onClick={() => router.push('/login')}
@@ -425,7 +425,7 @@ export default function BuyerDashboard() {
           </div>
           
           {recentlyViewed.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {recentlyViewed.map((property) => (
                 <PropertyCard key={property.id} property={property} />
               ))}
@@ -456,7 +456,7 @@ export default function BuyerDashboard() {
               <span className="text-gray-400">({nearbyProperties.length} properties)</span>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {nearbyProperties.map((property) => (
                 <PropertyCard key={property.id} property={property} />
               ))}
@@ -471,7 +471,7 @@ export default function BuyerDashboard() {
               <span className="text-gray-400">({aishaProperties.length} properties)</span>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {aishaProperties.map((property) => (
                 <PropertyCard key={property.id} property={property} isAishaPick={true} />
               ))}

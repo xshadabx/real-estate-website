@@ -165,11 +165,21 @@ export default function BuyerProfilePage() {
 
   return (
     <div className="min-h-screen bg-black text-white flex">
+      {/* Mobile Sidebar Overlay */}
+      {sidebarExpanded && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          onClick={() => setSidebarExpanded(false)}
+        />
+      )}
+      
       {/* Sidebar */}
       <motion.aside
         initial={false}
         animate={{ width: sidebarExpanded ? 288 : 80 }}
-        className="fixed left-0 top-0 h-full bg-zinc-950 border-r border-zinc-800 z-40"
+        className={`fixed left-0 top-0 h-full bg-zinc-950 border-r border-zinc-800 z-40 ${
+          sidebarExpanded ? 'block' : 'hidden lg:block'
+        }`}
       >
         <div className="flex flex-col h-full p-4">
           {/* Brand Header */}
@@ -262,12 +272,30 @@ export default function BuyerProfilePage() {
       </motion.aside>
 
       {/* Main Content */}
-      <main className={`flex-1 transition-all duration-300 ${sidebarExpanded ? 'ml-72' : 'ml-20'}`}>
-        <div className="max-w-7xl mx-auto p-6 space-y-6">
-          {/* Back Button */}
+      <main className="flex-1 transition-all duration-300 lg:ml-20">
+        <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
+          {/* Mobile Menu Button */}
+          <div className="flex items-center justify-between mb-4 lg:hidden">
+            <button
+              onClick={() => setSidebarExpanded(!sidebarExpanded)}
+              className="p-3 rounded-full hover:opacity-90 transition-opacity shadow-lg"
+              style={{ background: '#E3EF26' }}
+            >
+              <Menu className="w-5 h-5 text-black" />
+            </button>
+            <button
+              onClick={() => router.push('/home')}
+              className="p-3 rounded-full hover:opacity-90 transition-opacity shadow-lg"
+              style={{ background: '#E3EF26' }}
+            >
+              <ArrowLeft className="w-5 h-5 text-black" />
+            </button>
+          </div>
+          
+          {/* Desktop Back Button */}
           <button
             onClick={() => router.push('/home')}
-            className="p-3 rounded-full hover:opacity-90 transition-opacity shadow-lg mb-4"
+            className="hidden lg:block p-3 rounded-full hover:opacity-90 transition-opacity shadow-lg mb-4"
             style={{ background: '#E3EF26' }}
           >
             <ArrowLeft className="w-5 h-5 text-black" />

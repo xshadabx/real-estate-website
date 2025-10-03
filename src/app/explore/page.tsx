@@ -217,7 +217,7 @@ export default function ExplorePage() {
         </div>
 
         {/* Property Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredProperties.map((property) => (
             <div
               key={property.id}
@@ -246,7 +246,7 @@ export default function ExplorePage() {
               </div>
 
               {/* Content Section */}
-              <div className="p-5">
+              <div className="p-4 sm:p-5">
                 <h3 className="text-lg font-semibold text-white mb-2 truncate">{property.title}</h3>
                 
                 <div className="flex items-center justify-between mb-4">

@@ -16,6 +16,40 @@
   * {
     @apply border-gray-200;
   }
+  
+  /* Mobile optimizations */
+  @media (max-width: 640px) {
+    body {
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Prevent zoom on input focus */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+      font-size: 16px;
+    }
+  }
+  
+  /* Desktop optimizations */
+  @media (min-width: 1024px) {
+    /* Ensure proper desktop layout */
+    .desktop-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+  
+  /* Tablet optimizations */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    /* Tablet-specific styles */
+    .tablet-layout {
+      padding: 1rem;
+    }
+  }
 }
 
 @layer components {

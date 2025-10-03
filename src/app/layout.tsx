@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Prop.AI Team' }],
   creator: 'Prop.AI',
   publisher: 'Prop.AI',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
   formatDetection: {
     email: false,
     address: false,
