@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { SupabaseProvider } from '@/components/providers/SupabaseProvider';
+import { ConvexProviderWrapper } from '@/components/providers/ConvexProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -65,9 +66,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={inter.className}>
-        <SupabaseProvider>
-          {children}
-        </SupabaseProvider>
+        <ConvexProviderWrapper>
+          <SupabaseProvider>
+            {children}
+          </SupabaseProvider>
+        </ConvexProviderWrapper>
       </body>
     </html>
   );
