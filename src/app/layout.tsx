@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { SupabaseProvider } from '@/components/providers/SupabaseProvider';
 import { ConvexProviderWrapper } from '@/components/providers/ConvexProvider';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -64,14 +63,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
-        <ConvexProviderWrapper>
-          <SupabaseProvider>
-            {children}
-          </SupabaseProvider>
-        </ConvexProviderWrapper>
-      </body>
-    </html>
+        <html lang="en" className="scroll-smooth">
+          <body className={inter.className}>
+            <ConvexProviderWrapper>
+              {children}
+            </ConvexProviderWrapper>
+          </body>
+        </html>
   );
 }

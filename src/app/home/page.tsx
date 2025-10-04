@@ -260,7 +260,7 @@ export default function BuyerDashboard() {
   const router = useRouter();
   const [username, setUsername] = useState('Guest');
   
-  // Use database hooks
+  // Use Convex database hooks
   const { properties, loading: propertiesLoading } = useProperties();
   const { featuredProperties, loading: featuredLoading } = useFeaturedProperties();
 
