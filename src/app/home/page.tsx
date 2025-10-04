@@ -21,7 +21,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import LocationButton from '@/components/LocationButton';
-import { useProperties, useFeaturedProperties } from '@/hooks/useDatabase';
+import { useProperties, useFeaturedProperties } from '@/hooks/useConvex';
 
 // Property Card Component
 const PropertyCard = ({ 

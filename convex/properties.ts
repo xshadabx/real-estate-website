@@ -76,3 +76,26 @@ export const deleteProperty = mutation({
     await ctx.db.delete(args.id);
   },
 });
+
+// Query to get featured properties
+export const getFeaturedProperties = query({
+  handler: async (ctx) => {
+    return await ctx.db
+      .query("properties")
+      .filter((q) => q.eq(q.field("featured"), true))
+      .collect();
+  },
+});
+
+// Query to search properties
+export const searchProperties = query({
+  args: { query: v.string() },
+  handler: async (ctx, args) => {
+    const properties = await ctx.db.query("properties").collect();
+    return properties.filter(property => 
+      property.title.toLowerCase().includes(args.query.toLowerCase()) ||
+      property.location.toLowerCase().includes(args.query.toLowerCase()) ||
+      property.description.toLowerCase().includes(args.query.toLowerCase())
+    );
+  },
+});

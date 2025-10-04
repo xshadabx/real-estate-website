@@ -18,7 +18,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import Orb from '@/components/Orb';
-import { useAIChat } from '@/hooks/useBackend';
+import { useAIChat } from '@/hooks/useConvex';
 
 // Message type
 interface Message {
