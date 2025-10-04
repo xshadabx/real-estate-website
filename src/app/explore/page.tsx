@@ -16,6 +16,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import LocationButton from '@/components/LocationButton';
+import { useProperties, usePropertySearch } from '@/hooks/useBackend';
 
 // Property type
 interface Property {

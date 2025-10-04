@@ -21,6 +21,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import LocationButton from '@/components/LocationButton';
+import { useProperties, useFeaturedProperties } from '@/hooks/useDatabase';
 
 // Property Card Component
 const PropertyCard = ({ 
@@ -258,6 +259,10 @@ const BottomNavigation = () => {
 export default function BuyerDashboard() {
   const router = useRouter();
   const [username, setUsername] = useState('Guest');
+  
+  // Use database hooks
+  const { properties, loading: propertiesLoading } = useProperties();
+  const { featuredProperties, loading: featuredLoading } = useFeaturedProperties();
 
   useEffect(() => {
     // Get username from localStorage (saved from profile page)
