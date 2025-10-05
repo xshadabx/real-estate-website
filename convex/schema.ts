@@ -17,6 +17,7 @@ export default defineSchema({
   }),
   
   users: defineTable({
+    userId: v.string(), // Auth provider user ID
     email: v.string(),
     name: v.string(),
     role: v.union(v.literal("buyer"), v.literal("seller")),

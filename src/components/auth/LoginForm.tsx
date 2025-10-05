@@ -1,12 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { EyeIcon, EyeOffIcon, MailIcon, LockIcon, UserIcon } from 'lucide-react';
+import { useMutation } from 'convex/react';
+import { api } from '../../../convex/_generated/api';
 
 export default function LoginForm() {
   const router = useRouter();
+  const saveUser = useMutation(api.users.saveUser);
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,50 +26,88 @@ export default function LoginForm() {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Create appropriate profile based on role
-    if (formData.role === 'seller') {
-      const sellerProfile = {
-        name: formData.firstName + ' ' + formData.lastName,
-        tagline: 'Real Estate Professional',
-        bio: 'Experienced real estate professional helping clients find their perfect properties.',
-        phone: '+1 (555) 123-4567',
-        email: formData.email,
-        website: 'www.example.com',
-        experience: 5,
-        totalListings: 0,
-        activeListings: 0,
-        soldProperties: 0,
-        rating: 5.0,
-        reviewCount: 0,
-        totalSalesVolume: '$0',
-        averageDaysOnMarket: 0,
-        verified: true,
-        licenseNumber: 'RE-XXXXX-XX'
-      };
-      localStorage.setItem('sellerProfile', JSON.stringify(sellerProfile));
-      // Clear any existing buyer profile
-      localStorage.removeItem('userProfile');
-      console.log('Seller profile saved:', sellerProfile);
-    } else {
-      const buyerProfile = {
-        name: formData.firstName + ' ' + formData.lastName,
-        username: '@' + formData.firstName.toLowerCase(),
-        bio: 'Looking for my dream home. First-time buyer exploring properties.',
-        saved: 0,
-        followers: 0,
-        following: 0
-      };
-      localStorage.setItem('userProfile', JSON.stringify(buyerProfile));
-      // Clear any existing seller profile
-      localStorage.removeItem('sellerProfile');
-      console.log('Buyer profile saved:', buyerProfile);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // For now, simulate authentication by creating a mock user ID
+      const mockUserId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      
+      // Save user to Convex database (for both login and signup)
+      try {
+        const fullName = isLogin ? formData.email.split('@')[0] : `${formData.firstName} ${formData.lastName}`;
+        const userRole = isLogin ? 'buyer' : formData.role as "buyer" | "seller";
+        
+        console.log('🔄 Attempting to save user to Convex...', { 
+          userId: mockUserId, 
+          email: formData.email, 
+          name: fullName, 
+          role: userRole 
+        });
+        
+        const result = await saveUser({
+          userId: mockUserId,
+          email: formData.email,
+          name: fullName,
+          role: userRole,
+        });
+        
+        console.log('✅ User saved to Convex database successfully!', { result });
+      } catch (error) {
+        console.error('❌ Failed to save user to Convex:', error);
+        console.log('Error details:', {
+          message: error instanceof Error ? error.message : 'Unknown error',
+          stack: error instanceof Error ? error.stack : undefined
+        });
+        console.log('Continuing with localStorage fallback...');
+      }
+      
+      // Create appropriate profile based on role
+      if (formData.role === 'seller') {
+        const sellerProfile = {
+          name: formData.firstName + ' ' + formData.lastName,
+          tagline: 'Real Estate Professional',
+          bio: 'Experienced real estate professional helping clients find their perfect properties.',
+          phone: '+1 (555) 123-4567',
+          email: formData.email,
+          website: 'www.example.com',
+          experience: 5,
+          totalListings: 0,
+          activeListings: 0,
+          soldProperties: 0,
+          rating: 5.0,
+          reviewCount: 0,
+          totalSalesVolume: '$0',
+          averageDaysOnMarket: 0,
+          verified: true,
+          licenseNumber: 'RE-XXXXX-XX'
+        };
+        localStorage.setItem('sellerProfile', JSON.stringify(sellerProfile));
+        // Clear any existing buyer profile
+        localStorage.removeItem('userProfile');
+        console.log('Seller profile saved:', sellerProfile);
+      } else {
+        const buyerProfile = {
+          name: formData.firstName + ' ' + formData.lastName,
+          username: '@' + formData.firstName.toLowerCase(),
+          bio: 'Looking for my dream home. First-time buyer exploring properties.',
+          saved: 0,
+          followers: 0,
+          following: 0
+        };
+        localStorage.setItem('userProfile', JSON.stringify(buyerProfile));
+        // Clear any existing seller profile
+        localStorage.removeItem('sellerProfile');
+        console.log('Buyer profile saved:', buyerProfile);
+      }
+      
+      // Redirect to home page after successful login/signup
+      router.push('/home');
+    } catch (error) {
+      console.error('Login error:', error);
+    } finally {
+      setIsLoading(false);
     }
-    
-    // Redirect to home page after successful login/signup
-    router.push('/home');
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

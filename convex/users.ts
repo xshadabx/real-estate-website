@@ -47,7 +47,11 @@ export const createUser = mutation({
       throw new Error("User with this email already exists");
     }
 
-    const userId = await ctx.db.insert("users", {
+    // Generate a unique userId for this user
+    const userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+
+    const userRecordId = await ctx.db.insert("users", {
+      userId: userId,
       email: args.email,
       name: args.name,
       role: args.role,
@@ -55,7 +59,7 @@ export const createUser = mutation({
       createdAt: Date.now(),
     });
 
-    return userId;
+    return userRecordId;
   },
 });
 
@@ -102,5 +106,37 @@ export const searchUsers = query({
       user.name.toLowerCase().includes(args.query.toLowerCase()) ||
       user.email.toLowerCase().includes(args.query.toLowerCase())
     );
+  },
+});
+
+// Save user after authentication
+export const saveUser = mutation({
+  args: {
+    userId: v.string(),
+    email: v.string(),
+    name: v.string(),
+    role: v.union(v.literal("buyer"), v.literal("seller")),
+  },
+  handler: async (ctx, args) => {
+    // Check if user already exists
+    const existingUser = await ctx.db
+      .query("users")
+      .filter((q) => q.eq(q.field("userId"), args.userId))
+      .first();
+
+    if (existingUser) {
+      return existingUser._id;
+    }
+
+    // Create new user record
+    const userId = await ctx.db.insert("users", {
+      userId: args.userId,
+      email: args.email,
+      name: args.name,
+      role: args.role,
+      createdAt: Date.now(),
+    });
+
+    return userId;
   },
 });
