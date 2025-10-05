@@ -19,7 +19,7 @@
 Set these environment variables in Vercel dashboard:
 
 ```
-NEXT_PUBLIC_CONVEX_URL=https://doting-magpie-674.convex.cloud
+NEXT_PUBLIC_CONVEX_URL=https://outgoing-squirrel-476.convex.cloud
 ```
 
 #### 3. Build Settings
