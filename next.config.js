@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // Removed output: 'export' for Vercel deployment
   trailingSlash: true,
   images: {
-    unoptimized: true,
     domains: [
       'images.unsplash.com',
       'plus.unsplash.com',
@@ -19,6 +18,10 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  // Enable experimental features for better performance
+  experimental: {
+    optimizeCss: true,
+  },
 }
 
 module.exports = nextConfig

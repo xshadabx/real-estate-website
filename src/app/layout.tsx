@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ConvexProviderWrapper } from '@/components/providers/ConvexProvider';
@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   authors: [{ name: 'Prop.AI Team' }],
   creator: 'Prop.AI',
   publisher: 'Prop.AI',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
   formatDetection: {
     email: false,
     address: false,
@@ -55,6 +54,13 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
