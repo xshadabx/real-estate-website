@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "framework": "nextjs",
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
@@ -6,11 +7,22 @@
   "env": {
     "NEXT_PUBLIC_CONVEX_URL": "https://outgoing-squirrel-476.convex.cloud"
   },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_CONVEX_URL": "https://outgoing-squirrel-476.convex.cloud"
+    }
+  },
   "functions": {
     "src/app/api/**/*.ts": {
       "runtime": "nodejs18.x"
     }
   },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

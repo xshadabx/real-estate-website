@@ -18,10 +18,7 @@ const nextConfig = {
   swcMinify: true,
   poweredByHeader: false,
   reactStrictMode: true,
-  // Enable experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-  },
+  // Removed experimental optimizeCss to fix build issues
 }
 
 module.exports = nextConfig
